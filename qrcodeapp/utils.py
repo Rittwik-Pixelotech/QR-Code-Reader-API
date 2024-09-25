@@ -30,13 +30,12 @@ class QRCodeProcessor:
             x_position = qr_code.rect.left
             y_position = qr_code.rect.top
 
-            # Save QR code details in the database
             qr_code_obj = QRCode(
                 content=content, x_position=x_position, y_position=y_position
             )
             qr_code_obj.save()
 
-            # Add to the response
+
             data = {"content": content, "x": x_position, "y": y_position}
             response["qr_codes"].append(data)
         return response
